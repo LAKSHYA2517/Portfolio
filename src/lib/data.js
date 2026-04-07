@@ -6,32 +6,32 @@ const defaultSettings = {
     title: "Full-Stack Developer",
     bio: "I craft beautiful digital experiences that blend aesthetics with functionality. Passionate about clean code, intuitive design, and pushing creative boundaries.",
     avatar: "",
-    email: "hello@alexrivera.dev",
-    socials: { github: "#", twitter: "#", linkedin: "#" },
+    email: "lakshya.asnani25@gmail.com",
+    socials: { github: "https://github.com/LAKSHYA2517", twitter: "https://twitter.com", linkedin: "https://www.linkedin.com/in/lakshya-asnani/" },
 };
 const defaultProjects = [
     {
-        id: "1", title: "E-Commerce Platform", description: "A modern shopping experience with real-time inventory",
-        content: "Built with React and Node.js, featuring real-time inventory tracking, payment processing, and a beautiful responsive design.",
-        category: "Web App", image: "", tags: ["React", "Node.js", "Stripe"], link: "#", featured: true,
+        id: "1", title: "Mortagage AI Assisment", description: "RAG system that ingests mortgage documents",
+        content: "loan applications, closing disclosures, promissory notes, title reports",
+        category: "Web App", image: "https://private-user-images.githubusercontent.com/183131208/558863495-554205d9-0739-4a90-b17f-312c7d4a102d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzU1NjI1OTcsIm5iZiI6MTc3NTU2MjI5NywicGF0aCI6Ii8xODMxMzEyMDgvNTU4ODYzNDk1LTU1NDIwNWQ5LTA3MzktNGE5MC1iMTdmLTMxMmM3ZDRhMTAyZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwN1QxMTQ0NTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jM2FjOTQ1MTI0YmZhMjVlOGY5MjFiN2VmNjA2NGU2OTMxODdiYzc0ZGYwYjU1MmRkYjJhYTI1NGFhOTNkMjJiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.a3chNjc_jjprcHm7RF4I8IuHmR2RAT8M77JJw2C-gaA", tags: ["React", "Node.js", "Stripe"], link: "#", featured: true,
         createdAt: "2024-01-15", updatedAt: "2024-01-15",
     },
     {
         id: "2", title: "Task Management Dashboard", description: "Collaborative project management tool",
         content: "A Kanban-style task management tool with real-time collaboration, drag-and-drop, and analytics.",
-        category: "Web App", image: "", tags: ["React", "TypeScript", "WebSocket"], link: "#", featured: true,
+        category: "Web App", image: "https://camo.githubusercontent.com/1a237fbd2a2ecb50a8c2a38cb5b4ed0157b6a172920c30be502acf15fae8cd67/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6831326d3766767638367a30797274746f7230702e504e47", tags: ["React", "TypeScript", "WebSocket"], link: "#", featured: true,
         createdAt: "2024-02-10", updatedAt: "2024-02-10",
     },
     {
         id: "3", title: "Brand Identity - Zenith", description: "Complete brand identity for a tech startup",
         content: "Logo design, brand guidelines, marketing materials, and web presence for Zenith Technologies.",
-        category: "Design", image: "", tags: ["Branding", "UI/UX", "Figma"], link: "#", featured: false,
+        category: "Design", image: "https://cdn.dribbble.com/userupload/15117063/file/original-57642017af0b62d10aa2270191366e78.jpg?resize=752x&vertical=center", tags: ["Branding", "UI/UX", "Figma"], link: "#", featured: false,
         createdAt: "2024-03-05", updatedAt: "2024-03-05",
     },
     {
         id: "4", title: "Weather App", description: "Beautiful weather visualization with forecasts",
         content: "A weather application with stunning visualizations, 7-day forecasts, and location-based alerts.",
-        category: "Mobile", image: "", tags: ["React Native", "API", "Charts"], link: "#", featured: true,
+        category: "Mobile", image: "https://cdn.dribbble.com/userupload/33730339/file/original-6178ac76d6b35889e5552064e3f155ee.png?resize=752x&vertical=center", tags: ["React Native", "API", "Charts"], link: "#", featured: true,
         createdAt: "2024-03-20", updatedAt: "2024-03-20",
     },
 ];

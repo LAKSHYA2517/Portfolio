@@ -45,8 +45,11 @@ export default function Index() {
               </Button>
             </a>
             <a href="#contact">
-              <Button variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 font-body">
-                Get in Touch
+              <Button 
+                  variant="outline" 
+                  className="border-white/10 text-zinc-400 hover:text-white hover:bg-white/5 font-body"
+                >
+                  Get in Touch
               </Button>
             </a>
           </div>
