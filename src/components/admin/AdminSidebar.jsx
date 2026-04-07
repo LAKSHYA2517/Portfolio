@@ -1,4 +1,4 @@
-import { LayoutDashboard, FolderOpen, FileText, BarChart3, Palette, Eye, LogOut } from "lucide-react";
+import { LayoutDashboard, FolderOpen, FileText, BarChart3, Palette, Eye, Sparkles } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar, } from "@/components/ui/sidebar";
@@ -7,6 +7,7 @@ const menuItems = [
     { title: "Projects", url: "/admin/projects", icon: FolderOpen },
     { title: "Blog Posts", url: "/admin/blogs", icon: FileText },
     { title: "Analytics", url: "/admin/analytics", icon: BarChart3 },
+  { title: "Novelty Lab", url: "/admin/novelty", icon: Sparkles },
     { title: "Theme", url: "/admin/theme", icon: Palette },
 ];
 export function AdminSidebar() {

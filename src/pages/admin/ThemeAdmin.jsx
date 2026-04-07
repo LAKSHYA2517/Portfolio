@@ -4,12 +4,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import { getSettings, saveSettings } from "@/lib/data";
+import { useTheme } from "next-themes";
 import { toast } from "sonner";
 export default function ThemeAdmin() {
     const [settings, setSettings] = useState(getSettings);
+  const { setTheme } = useTheme();
+
+  const currentMode = settings.themeMode || "system";
+  const isDark = currentMode === "dark";
+
     const handleSave = () => {
         saveSettings(settings);
+    setTheme(settings.themeMode || "system");
         toast.success("Settings saved!");
     };
     return (<div className="space-y-6 animate-fade-in max-w-2xl">
@@ -46,6 +54,62 @@ export default function ThemeAdmin() {
               <Label>Avatar URL</Label>
               <Input value={settings.avatar} onChange={(e) => setSettings({ ...settings, avatar: e.target.value })}/>
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="spotlight-card">
+        <CardHeader>
+          <CardTitle className="font-heading">Display Mode</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center justify-between rounded-lg border p-4">
+            <div>
+              <p className="font-medium">Dark mode</p>
+              <p className="text-sm text-muted-foreground">
+                Use the dark theme as default for your portfolio.
+              </p>
+            </div>
+            <Switch
+              checked={isDark}
+              onCheckedChange={(checked) => {
+                const mode = checked ? "dark" : "light";
+                setSettings({ ...settings, themeMode: mode });
+                setTheme(mode);
+              }}
+            />
+          </div>
+          <div className="flex gap-2">
+            <Button
+              type="button"
+              variant={currentMode === "light" ? "default" : "outline"}
+              onClick={() => {
+                setSettings({ ...settings, themeMode: "light" });
+                setTheme("light");
+              }}
+            >
+              Light
+            </Button>
+            <Button
+              type="button"
+              variant={currentMode === "dark" ? "default" : "outline"}
+              onClick={() => {
+                setSettings({ ...settings, themeMode: "dark" });
+                setTheme("dark");
+              }}
+            >
+              Dark
+            </Button>
+            <Button
+              type="button"
+              variant={currentMode === "system" ? "default" : "outline"}
+              onClick={() => {
+                setSettings({ ...settings, themeMode: "system" });
+                setTheme("system");
+              }}
+            >
+              System
+            </Button>
           </div>
         </CardContent>
       </Card>

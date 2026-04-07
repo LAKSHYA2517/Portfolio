@@ -7,13 +7,14 @@ const defaultSettings = {
     bio: "I craft beautiful digital experiences that blend aesthetics with functionality. Passionate about clean code, intuitive design, and pushing creative boundaries.",
     avatar: "",
     email: "lakshya.asnani25@gmail.com",
+    themeMode: "system",
     socials: { github: "https://github.com/LAKSHYA2517", twitter: "https://twitter.com", linkedin: "https://www.linkedin.com/in/lakshya-asnani/" },
 };
 const defaultProjects = [
     {
         id: "1", title: "Mortagage AI Assisment", description: "RAG system that ingests mortgage documents",
         content: "loan applications, closing disclosures, promissory notes, title reports",
-        category: "Web App", image: "https://private-user-images.githubusercontent.com/183131208/558863495-554205d9-0739-4a90-b17f-312c7d4a102d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzU1NjI1OTcsIm5iZiI6MTc3NTU2MjI5NywicGF0aCI6Ii8xODMxMzEyMDgvNTU4ODYzNDk1LTU1NDIwNWQ5LTA3MzktNGE5MC1iMTdmLTMxMmM3ZDRhMTAyZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwN1QxMTQ0NTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jM2FjOTQ1MTI0YmZhMjVlOGY5MjFiN2VmNjA2NGU2OTMxODdiYzc0ZGYwYjU1MmRkYjJhYTI1NGFhOTNkMjJiJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.a3chNjc_jjprcHm7RF4I8IuHmR2RAT8M77JJw2C-gaA", tags: ["React", "Node.js", "Stripe"], link: "#", featured: true,
+        category: "Web App", image: "https://cdn.dribbble.com/userupload/16982736/file/original-76d5036ab8b1ebc1f3177e572f7bf599.png?resize=1504x1128&vertical=center", tags: ["React", "Node.js", "Stripe"], link: "#", featured: true,
         createdAt: "2024-01-15", updatedAt: "2024-01-15",
     },
     {
@@ -74,11 +75,53 @@ export function saveBlogs(blogs) {
     saveToStorage(BLOGS_KEY, blogs);
 }
 export function getSettings() {
-    return getFromStorage(SETTINGS_KEY, defaultSettings);
+    const stored = getFromStorage(SETTINGS_KEY, defaultSettings);
+    return {
+        ...defaultSettings,
+        ...stored,
+        socials: {
+            ...defaultSettings.socials,
+            ...(stored?.socials || {}),
+        },
+    };
 }
 export function saveSettings(settings) {
     saveToStorage(SETTINGS_KEY, settings);
 }
 export function generateId() {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+function clampScore(value) {
+    return Math.max(35, Math.min(98, Math.round(value)));
+}
+
+export function calculateProjectDNA(project) {
+    const tagsCount = project.tags?.length || 0;
+    const contentLength = (project.content || "").length;
+    const hasDemo = Boolean(project.link && project.link !== "#");
+    const featuredBoost = project.featured ? 8 : 0;
+
+    const creativity = clampScore(48 + tagsCount * 6 + (project.category === "Design" ? 12 : 0) + featuredBoost);
+    const complexity = clampScore(40 + contentLength / 18 + (project.category === "Web App" ? 8 : 4));
+    const impact = clampScore(45 + (hasDemo ? 14 : 3) + featuredBoost + (project.description?.length || 0) / 9);
+    const execution = clampScore(44 + tagsCount * 5 + (project.image ? 8 : 2));
+    const noveltyScore = clampScore((creativity + complexity + impact + execution) / 4);
+
+    let insight = "Balanced technical foundation with room for experimentation.";
+    if (noveltyScore > 82) {
+        insight = "High innovation signal. This project strongly differentiates your portfolio.";
+    }
+    else if (noveltyScore > 70) {
+        insight = "Strong project DNA. Add one breakthrough feature to push it further.";
+    }
+
+    return {
+        creativity,
+        complexity,
+        impact,
+        execution,
+        noveltyScore,
+        insight,
+    };
 }
