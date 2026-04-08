@@ -40,6 +40,14 @@ export default function Index() {
     const emailBody = encodeURIComponent("Hi Lakshya,%0A%0AI saw your portfolio and would like to discuss a collaboration/project.%0A%0AProject details:%0ATimeline:%0ABudget:%0A%0AThanks,");
     const contactEmailHref = `mailto:${settings.email}?subject=${emailSubject}&body=${emailBody}`;
 
+    const scrollToSection = (sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      const y = section.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    };
+
     const handleDummyMessageSubmit = (e) => {
       e.preventDefault();
       if (!messageForm.name.trim() || !messageForm.email.trim() || !messageForm.message.trim()) {
@@ -57,9 +65,27 @@ export default function Index() {
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
           <span className="font-heading font-bold text-xl text-foreground text-shimmer">{settings.name}</span>
           <div className="flex items-center gap-6">
-            <a href="#projects" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-            <a href="#blog" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-            <a href="#contact" className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <button
+              type="button"
+              onClick={() => scrollToSection("projects")}
+              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Projects
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection("blog")}
+              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Blog
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSection("contact")}
+              className="text-sm font-body text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Contact
+            </button>
             <ThemeModeToggle />
             <Link to="/admin">
               <Button variant="ghost" size="icon"><Settings className="h-4 w-4"/></Button>
